@@ -45,9 +45,9 @@ int main()
 		// 쓰기 전용으로 파일을 연다 
 		fd = open(FIFO_PIPE, O_WRONLY);
 		printf("메세지 입력: ");
-		// 입력한 문자열을 가져온다
+		// 입력한 문자열을 읽는다
 		fgets(m.p2_send, 300, stdin);
-		// 문자열(m.p2_send)을 FIFO_PIPE 파일에 쓰고 파일을 닫는다
+		// 읽어온 문자열(m.p2_send)을 FIFO_PIPE 파일에 쓰고 파일을 닫는다
 		write(fd, m.p2_send, strlen(m.p2_send)+1);
 		close(fd);
 		sleep(1);

@@ -37,11 +37,10 @@ int main()
 		// [1st]
 		// 쓰기 전용으로 파일을 연다 
 		fd = open(FIFO_PIPE, O_WRONLY); 
-		// 입력한 문자열을 가져온다 
-		// 최대 길이는 300
 		printf("메세지 입력: ");
+		// 입력한 문자열을 읽는다
 		fgets(m.p1_send, 300, stdin);
-		// 문자열을FIFO_PIPE 파일에 쓰고 파일을 닫는다
+		// 읽어온 문자열(m.p1_send)을 FIFO_PIPE 파일에 쓰고 파일을 닫는다
 		write(fd, m.p1_send, strlen(m.p1_send)+1);
 		close(fd);
 		sleep(1); // 채팅이 넘어가는 과정을 보여주기 위해 슬립을 1초간 걸어둠
